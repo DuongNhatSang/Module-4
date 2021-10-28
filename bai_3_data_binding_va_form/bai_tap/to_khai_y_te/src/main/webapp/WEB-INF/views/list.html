@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="notify">
+    <div th:if="${success}">
+        <span th:text="${success}"></span>
+    </div>
+</div>
+<table>
+    <tr th:each="tokhai,item:${toKhaiYTeList}">
+        <td th:text="${item.count}"></td>
+        <td th:text="${tokhai.hoTen}"></td>
+        <td th:text="${tokhai.thongTinDiLai}"></td>
+        <td th:text="${tokhai.trieuChung}"></td>
+        <td th:text="${tokhai.lichSuPhoiNhiem}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

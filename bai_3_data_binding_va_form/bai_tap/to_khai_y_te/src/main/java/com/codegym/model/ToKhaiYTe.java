@@ -11,7 +11,6 @@ public class ToKhaiYTe {
     private String soGhe;
     private String ngayKhoiHanh;
     private String ngayKetThuc;
-    private DiaChiLienLac diaChiLienLac;
     private String diaChiNoiO;
     private String soDienThoai;
     private String email;
@@ -23,7 +22,7 @@ public class ToKhaiYTe {
 
     public ToKhaiYTe(Integer id, String hoTen, String namsinh, Integer gioiTinh, String quocTich, String thongTinDiLai,
                      String soHieuPhuongTien, String soGhe, String ngayKhoiHanh, String ngayKetThuc,
-                     DiaChiLienLac diaChiLienLac, String diaChiNoiO, String soDienThoai, String email, String[] trieuChung,
+                     String diaChiNoiO, String soDienThoai, String email, String[] trieuChung,
                      String[] lichSuPhoiNhiem) {
         this.id = id;
         this.hoTen = hoTen;
@@ -35,7 +34,6 @@ public class ToKhaiYTe {
         this.soGhe = soGhe;
         this.ngayKhoiHanh = ngayKhoiHanh;
         this.ngayKetThuc = ngayKetThuc;
-        this.diaChiLienLac = diaChiLienLac;
         this.diaChiNoiO = diaChiNoiO;
         this.soDienThoai = soDienThoai;
         this.email = email;
@@ -123,13 +121,6 @@ public class ToKhaiYTe {
         this.ngayKetThuc = ngayKetThuc;
     }
 
-    public DiaChiLienLac getDiaChiLienLac() {
-        return diaChiLienLac;
-    }
-
-    public void setDiaChiLienLac(DiaChiLienLac diaChiLienLac) {
-        this.diaChiLienLac = diaChiLienLac;
-    }
 
     public String getDiaChiNoiO() {
         return diaChiNoiO;

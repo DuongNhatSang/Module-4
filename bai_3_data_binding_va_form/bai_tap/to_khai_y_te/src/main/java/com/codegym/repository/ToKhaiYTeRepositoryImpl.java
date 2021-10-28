@@ -13,4 +13,10 @@ public class ToKhaiYTeRepositoryImpl implements IToKhaiYTeRepository{
     public void createToKhaiYTe(ToKhaiYTe toKhaiYTe) {
         toKhaiYTeList.add(toKhaiYTe);
     }
+
+    @Override
+    public List<ToKhaiYTe> getListToKhaiYTe() {
+
+        return toKhaiYTeList;
+    }
 }

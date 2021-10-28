@@ -14,7 +14,9 @@
         <span th:text="${success}"></span>
     </div>
 </div>
-
+<form th:action="@{/product}" method="POST">
+    <input type="text" name="search"><span><input type="submit" value="Search"></span>
+</form>
 <table id = "products">
     <thead>
     <tr>

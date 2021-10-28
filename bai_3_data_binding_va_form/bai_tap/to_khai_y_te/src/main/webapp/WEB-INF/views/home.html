@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/home}" th:object="${toKhaiYTe}" method="POST" novalidate="novalidate">
+    <input type="hidden" th:field="*{id}"/>
+    <table>
+        <tr>
+            <th colspan="3">
+                <h2>TỜ KHAI Y TẾ</h2>
+                <h3>DAYAD LÀ TÀI LIỆU QUAN TRỌNG, THỒNG TIN CỦA ANH/CHỊ SẼ GIÚP CƠ QUAN Y TẾ LIÊN LẠC KHI CẦN THIẾT ĐỂ
+                    PHÒNG CHỐNG DỊCH BỆNH TRUYỀN NHIỄM</h3>
+                <p style="color: red">Khuyến cáo: khai báo thông tin sai là vi phạm pháp luật Việt Nam và có thể xử lý
+                    hình sự</p>
+            </th>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <p>Họ tên (ghi chữ IN HOA)<span style="color:red;">(*)</span></p>
+                <input type="text" th:field="*{hoTen}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Năm sinh<span style="color:red;">(*)</span></p>
+                <input type="text" th:field="*{namsinh}">
+            </td>
+            <td>
+                <p>Giới tính<span style="color:red;">(*)</span></p>
+                <select th:field="*{gioiTinh}">
+                    <option value="1">Nam</option>
+                    <option value="0">Nữ</option>
+                    <option value="2">LGBT</option>
+                </select>
+            </td>
+            <td>
+                <p>Quốc tịch<span style="color:red;">(*)</span></p>
+                <input type="text" th:field="*{quocTich}">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <p>Thông tin đi lại<span style="color:red;">(*)</span></p>
+                <input type="radio" th:field="*{thongTinDiLai}" value="Taubay">Tàu bay
+                <input type="radio" th:field="*{thongTinDiLai}" value="tauthuyen">Tàu thuyền
+                <input type="radio" th:field="*{thongTinDiLai}" value="oto">Ô tô
+                <input type="radio" th:field="*{thongTinDiLai}" value="khac">Khác (ghi rõ)
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <table>
+                    <tr>
+                        <td>
+                            <p>Số hiệu phương tiện</p>
+                            <input type="text" th:field="*{soHieuPhuongTien}">
+                        </td>
+                        <td>
+                            <p>Số ghế</p>
+                            <input type="text" th:field="*{soGhe}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Ngày khởi hành<span style="color:red;">(*)</span></p>
+                            <input type="date" th:field="*{ngayKhoiHanh}">
+                        </td>
+                        <td>
+                            <p>Ngày kết thúc<span style="color:red;">(*)</span></p>
+                            <input type="date" th:field="*{ngayKetThuc}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <p>Địa chỉ liên lạc<span style="color:red;">(*)</span></p>
+                            <input type="text" th:field="*{diaChiNoiO}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Điện thoại<span style="color:red;">(*)</span></p>
+                            <input type="number" th:field="*{soDienThoai}">
+                        </td>
+                        <td>
+                            <p>Email</p>
+                            <input type="text" th:field="*{email}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <p>Trong vòng 14 ngày qua, Anh/chị có thấy xuất hiện triệu chứng nào sau đây không <span
+                                    style="color:red;">(*)</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>Sốt</span>
+                            <input type="checkbox" th:field="*{trieuChung}" value="Sot ">
+                        </td>
+                        <td>
+                            <span>Nôn/Buồn nôn</span>
+                            <input type="checkbox" th:field="*{trieuChung}" value="Buonnon ">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>Ho</span>
+                            <input type="checkbox" th:field="*{trieuChung}" value="Ho ">
+                        </td>
+                        <td>
+                            <span>Tiêu chảy</span>
+                            <input type="checkbox" th:field="*{trieuChung}" value="Tieuchay ">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>Khó thở</span>
+                            <input type="checkbox" th:field="*{trieuChung}" value="Khotho ">
+                        </td>
+                        <td>
+                            <span>Xuất huyết ngoài da</span>
+                            <input type="checkbox" th:field="*{trieuChung}" value="Xuathuyetngoaida ">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>Đau họng</span>
+                            <input type="checkbox" th:field="*{trieuChung}" value="Dauhong ">
+                        </td>
+                        <td>
+                            <span>Nổi ban ngoài da</span>
+                            <input type="checkbox" th:field="*{trieuChung}" value="Noibanngoaida ">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <p>Lịch sử phơi nhiễm: trong vòng 14 ngày qua Anh/chị có: <span style="color:red;">(*)</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <p>Đến trang trại chăn nuôi/chợ buôn bán động vật sống/cơ sở giết mổ động vật</p>
+                            <input type="checkbox" th:field="*{lichSuPhoiNhiem}" value="channuoi ">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <p>Tiếp xúc gần (<2m) với người mắc bênh viêm đường hô hấp do nCoV</p>
+                            <input type="checkbox" th:field="*{lichSuPhoiNhiem}" value="Tiepxuc  ">
+                        </td>
+                    </tr>
+                    </td>
+                    </tr>
+                </table>
+                <p style="color: red">Dữ liệu bank cung cấp hoàn toàn bảo mật và chỉ phục vụ cho việc phòng chống dịch, thuộc quản lí của ban chỉ đạo quốc gia về phòng chống dịch covid-19.
+                Khi bạn nhấn nút gửi là bạn đã hiểu và đồng ý</p>
+                <div style="text-align: center">
+        <input type="submit" value="Gửi lời khai">
+                </div>
+    </table>
+</form>
+</body>
+</html>
