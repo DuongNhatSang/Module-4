@@ -27,6 +27,7 @@
         <th>Edit</th>
         <th>Delete</th>
         <th>View</th>
+        <th>View</th>
     </tr>
     </thead>
     <tbody>
@@ -38,9 +39,17 @@
         <td><a th:href="@{/product/{id}/edit(id=${product.getId()})}">edit</a></td>
         <td><a th:href="@{/product/{id}/delete(id=${product.getId()})}">delete</a></td>
         <td><a th:href="@{/product/{id}/view(id=${product.getId()})}">view</a></td>
+        <td>
+        <button type="button" th:onclick="|thayDoi1('${product.id}','${product.name}')|"> delete</button>
+        </td>
     </tr>
     </tbody>
 </table>
 <footer th:replace="/layout :: footer"></footer>
+<script>
+    function thayDoi1(name,id) {
+        alert(name+id);
+    }
+</script>
 </body>
 </html>
