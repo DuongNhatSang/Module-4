@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout :: head">
+</head>
+<body>
+<h3>Song Management</h3>
+<p>
+    <a th:href="@{/song/create}">
+        Add new song
+    </a>
+</p>
+<table id = "songList">
+    <thead>
+    <tr>
+        <th>Song name</th>
+        <th>Singer name</th>x
+        <th>Song type</th>
+        <th>Song</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="song : ${songList}">
+        <td th:text="${song.songName}"></td>
+        <td th:text="${song.singerName}"></td>
+        <td th:text="${song.songType}"></td>
+        <td><audio controls><source th:src="@{'../image/' + ${song.song}}" ></audio></td>
+        <td>
+            <a th:href="@{/song/edit/{id}(id=${song.id})}">
+                Edit
+            </a>
+            <a th:href="@{/song/delete/{id}(id=${song.id})}">
+                Delete
+            </a>
+        </td>
+    </tr>
+
+
+    </tbody>
+</table>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>
