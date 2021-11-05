@@ -52,7 +52,7 @@ public class SongController {
         SongDTO songDTO = new SongDTO();
         BeanUtils.copyProperties(song,songDTO);
         ModelAndView modelAndView = new ModelAndView("/edit");
-        modelAndView.addObject("songDTO",songDTO);
+        modelAndView.addObject("songDTO",songDTO    );
         return modelAndView;
     }
     @PostMapping("/edit")

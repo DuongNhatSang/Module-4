@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <form th:action="@{/book/rent}" th:object="${rentalBook}" method="post">
+        <div class="form-group">
+            <input type="hidden" th:field="*{id}"/>
+            <label for="exampleInputEmail1">Code Renta</label>
+            <input type="text" readonly class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" th:field="*{codeRenta}">
+        </div>
+        <div class="form-group">
+            <input type="hidden" th:field="*{book.id}"/>
+            <label >Book name</label>
+            <p th:each="book : ${bookList}" th:if="${book.id} == *{book.id}" th:text="${book.nameBook}"></p>
+        </div>
+        <button type="submit" class="btn btn-primary">Rent</button>
+    </form>
+</div>
+</body>
+</html>
