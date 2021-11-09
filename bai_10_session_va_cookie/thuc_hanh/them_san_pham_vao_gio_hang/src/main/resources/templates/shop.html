@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <i class="fab fa-microsoft" style="font-size: 20pt"></i>
+            <a class="navbar-brand" href="#">Microsoft | </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll"
+                    aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Surface<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                           data-toggle="dropdown" aria-expanded="false">
+                            Computers
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown1" role="button"
+                           data-toggle="dropdown" aria-expanded="false">
+                            Computers for business
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown1">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown2" role="button"
+                           data-toggle="dropdown" aria-expanded="false">
+                            Accessories
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown2">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown3" role="button"
+                           data-toggle="dropdown" aria-expanded="false">
+                            Shop now
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown3">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Support<span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown4" role="button"
+                               data-toggle="dropdown" aria-expanded="false">
+                                Shop now
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown4">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Search<span class="sr-only">(current)</span><i
+                                    class="fas fa-search"></i></a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/shopping-cart">Cart<span class="sr-only">(current)</span><i
+                                    class="fas fa-shopping-cart"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Sign in<span class="sr-only">(current)</span><i
+                                    class="fas fa-check-circle"></i></a>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </nav>
+
+    </div>
+    <div class="body">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 text-center mt-5" style="font-size: 30pt">New laptops from Surface, now with Windows 11
+            </div>
+            <div class="col-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 text-center" style="font-size: 15pt">Inspiration meets originality on new Surface laptops,
+                designed to light up the best of Windows 11 and
+                adapt to you.
+            </div>
+            <div class="col-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 text-center mt-5" style="font-size: 15pt">Explore ></div>
+            <div class="col-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <img src="https://fdn.gsmarena.com/imgroot/news/21/09/microsoft-surface-pro-8-leak/popup/-1024/gsmarena_002.jpg" width="100%">
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-3">
+                <div class="row">
+                    <div class="col-12" style="font-size: 23pt">
+                        More choices than ever
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        Check out the most diverse selection of Surface devices yet,
+                        built for all the ways you create, work, play, and connect.
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="row mt-3">
+                    <div class="col-12 text-primary">
+                        <i class="fas fa-desktop" style="font-size: 15pt"></i>
+                        <a><b>Compare devices ></b></a>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-12 text-primary">
+                        <i class="fas fa-home" style="font-size: 15pt"></i>
+                        <a><b>Surface at home ></b></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="row mt-3">
+                    <div class="col-12 text-primary">
+                        <i class="fas fa-user-check" style="font-size: 15pt"></i>
+                        <a><b>Help me choose ></b></a>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-12 text-primary ">
+                        <i class="fas fa-building" style="font-size: 15pt"></i>
+                        <a><b>For Business ></b></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3 mt-3 text-primary">
+                <i class="fas fa-shopping-basket" style="font-size: 15pt"></i>
+                <a><b>Deals ></b></a>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-3">2-in-1 PCs</div>
+            <div class="col-3"></div>
+            <div class="col-3"></div>
+            <div class="col-3">Dual Screen</div>
+        </div>
+        <div class="row">
+            <th:block th:each="product:${products}">
+                <div class="col-3 mt-3">
+                    <a th:href="@{view/{id}(id=${product.id})}">
+                    <div class="card" style="width: 100%;" >
+                        <img th:src="${product.img}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-text text-primary" th:text="${product.name}"></p>
+                            <p class="card-text text-primary" th:text="${product.price}"></p>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+            </th:block>
+        </div>
+    </div>
+</div>
+</body>
+</html>

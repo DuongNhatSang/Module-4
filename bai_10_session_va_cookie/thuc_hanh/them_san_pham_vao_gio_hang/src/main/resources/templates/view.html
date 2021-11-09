@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <i class="fab fa-microsoft" style="font-size: 20pt"></i>
+            <a class="navbar-brand" href="#">Microsoft | </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll"
+                    aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Surface<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                           data-toggle="dropdown" aria-expanded="false">
+                            Computers
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown1" role="button"
+                           data-toggle="dropdown" aria-expanded="false">
+                            Computers for business
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown1">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown2" role="button"
+                           data-toggle="dropdown" aria-expanded="false">
+                            Accessories
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown2">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown3" role="button"
+                           data-toggle="dropdown" aria-expanded="false">
+                            Shop now
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown3">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Support<span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown4" role="button"
+                               data-toggle="dropdown" aria-expanded="false">
+                                Shop now
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown4">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Search<span class="sr-only">(current)</span><i
+                                    class="fas fa-search"></i></a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/shopping-cart">Cart<span class="sr-only">(current)</span><i
+                                    class="fas fa-shopping-cart"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Sign in<span class="sr-only">(current)</span><i
+                                    class="fas fa-check-circle"></i></a>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </nav>
+
+    </div>
+    <div class="card mb-3" style="max-width: 540px;" th:object="${product}">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img th:src="${product.img}" width="100%">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Description</h5>
+                    <p class="card-text" th:text="${product.description}"></p>
+                    <b class="card-text"><a class="text-muted" th:href="@{/add/__${product.id}__(action='list')}">Add to cart</a></b>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

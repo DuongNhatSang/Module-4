@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a9bff1b1-ae50-4847-b7fb-75998c55b178" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../bai_10_session_va_cookie/thuc_hanh/dem_so_luot_view_trang/src/main/java/com/codegym/controller/CounterController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../bai_10_session_va_cookie/thuc_hanh/dem_so_luot_view_trang/src/main/java/com/codegym/model/Counter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../bai_10_session_va_cookie/thuc_hanh/dem_so_luot_view_trang/src/main/resources/templates/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ung_dung_furama/src/main/java/com/codegym/controller/HomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ung_dung_furama/src/main/java/com/codegym/model/AttachService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ung_dung_furama/src/main/java/com/codegym/model/Contract.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ung_dung_furama/src/main/java/com/codegym/model/ContractDetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ung_dung_furama/src/main/java/com/codegym/model/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ung_dung_furama/src/main/java/com/codegym/model/CustomerType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ung_dung_furama/src/main/java/com/codegym/model/Division.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ung_dung_furama/src/main/java/com/codegym/model/Education.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ung_dung_furama/src/main/java/com/codegym/model/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ung_dung_furama/src/main/java/com/codegym/model/Position.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ung_dung_furama/src/main/java/com/codegym/model/RentType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ung_dung_furama/src/main/java/com/codegym/model/Service.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ung_dung_furama/src/main/java/com/codegym/model/ServiceType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ung_dung_furama/src/main/resources/templates/home/home.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="20cFBFODaookvVhyaT5h3IfUdye" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ung_dung_furama" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="project.kotlinCompiler" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a9bff1b1-ae50-4847-b7fb-75998c55b178" name="Default Changelist" comment="" />
+      <created>1636335831071</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1636335831071</updated>
+      <workItem from="1636335834563" duration="24000" />
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="531" y="255" key="FileChooserDialogImpl" timestamp="1636335859770">
+      <screen x="0" y="0" width="1500" height="1000" />
+    </state>
+    <state x="531" y="255" key="FileChooserDialogImpl/0.0.1500.1000@0.0.1500.1000" timestamp="1636335859770" />
+  </component>
+</project>
