@@ -2,23 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9bff1b1-ae50-4847-b7fb-75998c55b178" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../bai_10_session_va_cookie/thuc_hanh/dem_so_luot_view_trang/src/main/java/com/codegym/controller/CounterController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bai_10_session_va_cookie/thuc_hanh/dem_so_luot_view_trang/src/main/java/com/codegym/model/Counter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bai_10_session_va_cookie/thuc_hanh/dem_so_luot_view_trang/src/main/resources/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ung_dung_furama/src/main/java/com/codegym/controller/HomeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ung_dung_furama/src/main/java/com/codegym/model/AttachService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ung_dung_furama/src/main/java/com/codegym/model/Contract.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ung_dung_furama/src/main/java/com/codegym/model/ContractDetail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ung_dung_furama/src/main/java/com/codegym/model/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ung_dung_furama/src/main/java/com/codegym/model/CustomerType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ung_dung_furama/src/main/java/com/codegym/model/Division.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ung_dung_furama/src/main/java/com/codegym/model/Education.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ung_dung_furama/src/main/java/com/codegym/model/Employee.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ung_dung_furama/src/main/java/com/codegym/model/Position.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ung_dung_furama/src/main/java/com/codegym/model/RentType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ung_dung_furama/src/main/java/com/codegym/model/Service.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ung_dung_furama/src/main/java/com/codegym/model/ServiceType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ung_dung_furama/src/main/resources/templates/home/home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../bai_11_webservice_va_restful/bai_tap/mo_rong_ung_ung_blog/src/main/java/com/codegym/controller/BlogRestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../bai_11_webservice_va_restful/thuc_hanh/quan_ly_khach_hang_su_dung_restful/src/main/java/com/codegym/controller/CustomerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../bai_11_webservice_va_restful/thuc_hanh/quan_ly_khach_hang_su_dung_restful/src/main/java/com/codegym/model/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../bai_11_webservice_va_restful/thuc_hanh/quan_ly_khach_hang_su_dung_restful/src/main/java/com/codegym/repository/ICustomerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../bai_11_webservice_va_restful/thuc_hanh/quan_ly_khach_hang_su_dung_restful/src/main/java/com/codegym/service/CustomerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../bai_11_webservice_va_restful/thuc_hanh/quan_ly_khach_hang_su_dung_restful/src/main/java/com/codegym/service/ICustomerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../bai_11_webservice_va_restful/thuc_hanh/quan_ly_khach_hang_su_dung_restful/src/main/java/com/codegym/service/IGeneralService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,13 +46,17 @@
       <option name="presentableId" value="Default" />
       <updated>1636335831071</updated>
       <workItem from="1636335834563" duration="24000" />
+      <workItem from="1636532530173" duration="55000" />
     </task>
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="531" y="255" key="FileChooserDialogImpl" timestamp="1636335859770">
+    <state x="531" y="255" key="FileChooserDialogImpl" timestamp="1636532583950">
       <screen x="0" y="0" width="1500" height="1000" />
     </state>
-    <state x="531" y="255" key="FileChooserDialogImpl/0.0.1500.1000@0.0.1500.1000" timestamp="1636335859770" />
+    <state x="531" y="255" key="FileChooserDialogImpl/0.0.1500.1000@0.0.1500.1000" timestamp="1636532583950" />
   </component>
 </project>
