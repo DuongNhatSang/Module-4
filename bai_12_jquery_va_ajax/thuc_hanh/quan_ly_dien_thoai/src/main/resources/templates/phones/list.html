@@ -4,13 +4,44 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>List Smartphone</title>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script>
+        function showList() {
+            $.ajax({
+                headers: {
+                    'Accept': "application/json",
+                    'Content-Type': "application/json"
+                },
+                type: "GET",
+                //tên API
+                url: "/smartphones/list",
+                //xử lý khi thành công
+                success: function (smartphoneList) {
+                    // hien thi danh sach o day
+                    console.log(smartphoneList)
+                    let content = '    <tr>\n' +
+                        '        <td>Producer</td>\n' +
+                        '        <td>Model</td>\n' +
+                        '        <td>Price</td>\n' +
+                        '        <td>Action</td>\n' +
+                        '    </tr>';
+                    for (let i = 0; i < smartphoneList.length; i++) {
+                        content += getSmartphone(smartphoneList[i]);
+                    }
+                    document.getElementById('smartphoneList').innerHTML = content;
+                }
+            })
+        };
 
         function addNewSmartPhone() {
             //lay du lieu
-            let producer = $('#producer').val();
-            let model = $('#model').val();
-            let price = $('#price').val();
+            let producer = document.getElementById("producer").value;
+            let model = document.getElementById("model").value;
+            let price = document.getElementById("price").value;
             let newSmartphone = {
                 producer: producer,
                 model: model,
@@ -25,42 +56,49 @@
                 type: "POST",
                 data: JSON.stringify(newSmartphone),
                 //tên API
-                url: "/smartphones",
+                url: "/smartphones/save",
                 //xử lý khi thành công
-                success: successHandler
+                success: function () {
+                    showList()
+                }
 
             });
             //chặn sự kiện mặc định của thẻ
             event.preventDefault();
         }
 
-        function successHandler() {
-            $.ajax({
-                type: "GET",
-                //tên API
-                url: "/smartphones",
-                //xử lý khi thành công
-                success: function (data) {
-                    // hien thi danh sach o day
-                    let content = '    <tr>\n' +
-                        '        <td>Producer</td>\n' +
-                        '        <td>Model</td>\n' +
-                        '        <td>Price</td>\n' +
-                        '        <td>Delete</td>\n' +
-                        '    </tr>';
-                    for (let i = 0; i < data.length; i++) {
-                        content += getSmartphone(data[i]);
-                    }
-                    document.getElementById('smartphoneList').innerHTML = content;
-                }
-            });
-        }
+        // function successHandler() {
+        //     $.ajax({
+        //         type: "GET",
+        //         //tên API
+        //         url: "/smartphones",
+        //         //xử lý khi thành công
+        //         success: function (data) {
+        //             // hien thi danh sach o day
+        //             let content = '    <tr>\n' +
+        //                 '        <td>Producer</td>\n' +
+        //                 '        <td>Model</td>\n' +
+        //                 '        <td>Price</td>\n' +
+        //                 '        <td>Action</td>\n' +
+        //                 '    </tr>';
+        //             for (let i = 0; i < data.length; i++) {
+        //                 content += getSmartphone(data[i]);
+        //             }
+        //             document.getElementById('smartphoneList').innerHTML = content;
+        //         }
+        //     });
+        // }
 
         function getSmartphone(smartphone) {
-            return `<tr><td >${smartphone.producer}</td><td >${smartphone.model}</td><td >${smartphone.price}</td>` +
-                `<td><a class="deleteSmartphone" href="${smartphone.id}">Delete</a></td></tr>`;
+            return `<tr>
+<td >${smartphone.producer}</td>
+<td >${smartphone.model}</td>
+<td >${smartphone.price}</td>
+<td><input value='edit' type='button' onclick='edit(${smartphone.id})'>
+<input value='delete' type='button' onclick='delete(${smartphone.id})'></td></tr>`;
         }
-            $(document).ready(function () {
+
+        $(document).ready(function () {
             //sư kiện nào thực hiện Ajax
             $('.deleteSmartphone').click(function (event) {
                 //lay du lieu
@@ -81,9 +119,61 @@
                 event.preventDefault();
             });
         })
+
+        function edit(id) {
+            $.ajax({
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                type: "GET",
+                //tên API
+                url: `/smartphones/edit/` + id,
+                //xử lý khi thành công
+                success: function (smartphone) {
+                    document.getElementById("idSmartphone").value = smartphone.id;
+                    document.getElementById("producerModal").value = smartphone.producer;
+                    document.getElementById("modelModal").value = smartphone.model;
+                    document.getElementById("priceModal").value = smartphone.price;
+                    $('#editSmartModal').modal('show');
+                }
+
+            });
+        }
+
+        function update() {
+            //lay du lieu
+            let idsp = document.getElementById("idSmartphone").value
+            let producer = document.getElementById("producerModal").value;
+            let model = document.getElementById("modelModal").value;
+            let price = document.getElementById("priceModal").value;
+            let newSmartphone = {
+                id: idsp,
+                producer: producer,
+                model: model,
+                price: price
+            };
+            // goi ajax
+            $.ajax({
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                type: "POST",
+                data: JSON.stringify(newSmartphone),
+                //tên API
+                url: "/smartphones/save",
+                //xử lý khi thành công
+                success: function () {
+                    showList()
+                }
+
+            })
+        };
+
     </script>
 </head>
-<body>
+<body onload="showList()">
 <form id="add-smartphone">
     <table>
         <tr>
@@ -105,21 +195,85 @@
     </table>
 </form>
 <h1>Smartphone List</h1>
+
 <table id="smartphoneList">
-    <tr>
-        <td>Producer</td>
-        <td>Model</td>
-        <td>Price</td>
-        <td>Delete</td>
-    </tr>
-    <th:block th:each="smartphone: ${smartphones}">
-        <tr>
-            <td th:text="${smartphone.producer}"></td>
-            <td th:text="${smartphone.model}"></td>
-            <td th:text="${smartphone.price}"></td>
-            <td><a class="deleteSmartphone" th:href="${smartphone.getId()}">Delete</a></td>
-        </tr>
-    </th:block>
+    <!--    <tr>-->
+    <!--        <td>Producer</td>-->
+    <!--        <td>Model</td>-->
+    <!--        <td>Price</td>-->
+    <!--        <td>Delete</td>-->
+    <!--    </tr>-->
+    <!--    <th:block th:each="smartphone: ${smartphones}">-->
+    <!--        <tr>-->
+    <!--            <td th:text="${smartphone.producer}"></td>-->
+    <!--            <td th:text="${smartphone.model}"></td>-->
+    <!--            <td th:text="${smartphone.price}"></td>-->
+    <!--            <td><a class="deleteSmartphone" th:href="${smartphone.getId()}">Delete</a>-->
+    <!--                <a class="deleteSmartphone" type="button" value="Edit" th:onclick="|edit(${smartphone.id})|"></a></td>-->
+    <!--        </tr>-->
+    <!--    </th:block>-->
 </table>
+
+<!--Modal edit-->
+<div id="editSmartModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <input type="hidden" id="idSmartphone">
+                <div class="form-group">
+                    <label>producer: </label>
+                    <input type="text" class="form-control" name="CMND" id="producerModal">
+                </div>
+                <div class="form-group">
+                    <label>model : </label>
+                    <input type="text" class="form-control" name="SDT" id="modelModal" placeholder="09xx">
+                </div>
+                <div class="form-group">
+                    <label>Price : </label>
+                    <input type="text" class="form-control" name="Email" id="priceModal">
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel">
+                    <input type="submit" class="btn btn-primary" value="update" onclick="update()">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal HTML -->
+<div id="deleteNoteModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form th:action="@{/customer/delete}" method="post">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete customer</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" name="id" id="id"/>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete customer ?</p>
+                    <label name="title"></label>
+                    <p class="text-warning"><small>This action cannot be undone.</small></p>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input type="submit" class="btn btn-danger" value="Delete">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
 </body>
 </html>

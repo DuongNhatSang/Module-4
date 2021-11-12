@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -16,19 +17,19 @@ public class SmartphoneController {
     @Autowired
     private ISmartphoneService smartphoneService;
 
-    @PostMapping
+    @PostMapping("/save")
     public ResponseEntity<Smartphone> createSmartphone(@RequestBody Smartphone smartphone) {
-        return new ResponseEntity<>(smartphoneService.save(smartphone), HttpStatus.CREATED);
+        smartphoneService.save(smartphone);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
     @GetMapping("/list")
-    public ModelAndView getAllSmartphonePage() {
-        ModelAndView modelAndView = new ModelAndView("/phones/list");
-        modelAndView.addObject("smartphones", smartphoneService.findAll());
-        return modelAndView;
+    public ResponseEntity<?> getAllSmartphonePage() {
+        List<Smartphone> smartphoneList = smartphoneService.findAll();
+        return new ResponseEntity<>(smartphoneList, HttpStatus.OK);
     }
     @GetMapping
-    public ResponseEntity<Iterable<Smartphone>> allPhones() {
-        return new ResponseEntity<>(smartphoneService.findAll(), HttpStatus.OK);
+    public ModelAndView allPhones() {
+        return new ModelAndView("/phones/list");
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<Smartphone> deleteSmartphone(@PathVariable Long id) {
@@ -39,5 +40,9 @@ public class SmartphoneController {
         smartphoneService.remove(id);
         return new ResponseEntity<>(smartphoneOptional.get(), HttpStatus.NO_CONTENT);
     }
-
+    @GetMapping("/edit/{id}")
+    public ResponseEntity<?> editPhones(@PathVariable Long id) {
+        Smartphone smartphone = smartphoneService.findById(id).get();
+        return new ResponseEntity<>(smartphone, HttpStatus.OK);
+    }
 }

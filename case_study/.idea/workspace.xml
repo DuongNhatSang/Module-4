@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9bff1b1-ae50-4847-b7fb-75998c55b178" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../bai_11_webservice_va_restful/bai_tap/mo_rong_ung_ung_blog/src/main/java/com/codegym/controller/BlogRestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bai_11_webservice_va_restful/thuc_hanh/quan_ly_khach_hang_su_dung_restful/src/main/java/com/codegym/controller/CustomerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bai_11_webservice_va_restful/thuc_hanh/quan_ly_khach_hang_su_dung_restful/src/main/java/com/codegym/model/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bai_11_webservice_va_restful/thuc_hanh/quan_ly_khach_hang_su_dung_restful/src/main/java/com/codegym/repository/ICustomerRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bai_11_webservice_va_restful/thuc_hanh/quan_ly_khach_hang_su_dung_restful/src/main/java/com/codegym/service/CustomerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bai_11_webservice_va_restful/thuc_hanh/quan_ly_khach_hang_su_dung_restful/src/main/java/com/codegym/service/ICustomerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../bai_11_webservice_va_restful/thuc_hanh/quan_ly_khach_hang_su_dung_restful/src/main/java/com/codegym/service/IGeneralService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bai_12_jquery_va_ajax/thuc_hanh/quan_ly_dien_thoai/src/main/java/com/codegym/controller/SmartphoneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../bai_12_jquery_va_ajax/thuc_hanh/quan_ly_dien_thoai/src/main/java/com/codegym/controller/SmartphoneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bai_12_jquery_va_ajax/thuc_hanh/quan_ly_dien_thoai/src/main/resources/templates/phones/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/../bai_12_jquery_va_ajax/thuc_hanh/quan_ly_dien_thoai/src/main/resources/templates/phones/list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +42,7 @@
       <updated>1636335831071</updated>
       <workItem from="1636335834563" duration="24000" />
       <workItem from="1636532530173" duration="55000" />
+      <workItem from="1636683858444" duration="23000" />
     </task>
     <servers />
   </component>
@@ -54,9 +50,9 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="531" y="255" key="FileChooserDialogImpl" timestamp="1636532583950">
+    <state x="531" y="255" key="FileChooserDialogImpl" timestamp="1636683879899">
       <screen x="0" y="0" width="1500" height="1000" />
     </state>
-    <state x="531" y="255" key="FileChooserDialogImpl/0.0.1500.1000@0.0.1500.1000" timestamp="1636532583950" />
+    <state x="531" y="255" key="FileChooserDialogImpl/0.0.1500.1000@0.0.1500.1000" timestamp="1636683879899" />
   </component>
 </project>
