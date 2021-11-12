@@ -37,91 +37,105 @@
         });
     </script>
 </head>
-<!--<body style="background-image: url('https://resortdanang.info/wp-content/uploads/2019/01/resort-furama-da-nang-1024x576.jpg');background-size: cover">-->
-<!--<div class="header">-->
-<!--    <div class="container-fluid">-->
-<!--        <div class="row">-->
-<!--            <div class="col-3">-->
-<!--                <img style="width: 30%;padding: 15px"-->
-<!--                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQlTaPPCcmHWMt6vGZ5QyfBTCSLcbmOys20dg&usqp=CAU">-->
-<!--            </div>-->
-<!--            <div class="col-3"></div>-->
-<!--            <div class="col-3"></div>-->
-<!--            <div class="col-3" style="display: flex;align-items: center">-->
-<!--                <h3 style="color: white">Dương Nhật Sang</h3>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-<!--&lt;!&ndash;end header&ndash;&gt;-->
+<body style="background-image: url('https://resortdanang.info/wp-content/uploads/2019/01/resort-furama-da-nang-1024x576.jpg');background-size: cover">
+<div class="header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
+                <img style="width: 30%;padding: 15px"
+                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQlTaPPCcmHWMt6vGZ5QyfBTCSLcbmOys20dg&usqp=CAU">
+            </div>
+            <div class="col-3"></div>
+            <div class="col-3"></div>
+            <div class="col-3" style="display: flex;align-items: center">
+                <h3 style="color: white">Dương Nhật Sang</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end header-->
 
-<!--&lt;!&ndash; edit Modal HTML &ndash;&gt;-->
-<!--<div class="row">-->
-<!--    <div class="col-4"></div>-->
-<!--    <div class="col-4">-->
-<!--        <div>-->
-<!--            <form th:action="@{/customer/edit}" method="post" th:object="${customerDTO}">-->
-<!--                <div >-->
-<!--                    <h4 style="color:black">Edit Customer</h4>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <input type="hidden" th:field="*{customerId}"/>-->
-<!--                    <div class="form-group">-->
-<!--                        <label style="color:blue"><b>Name :</b></label>-->
-<!--                        <input type="text" class="form-control" th:field="*{fullName}">-->
-<!--                    </div>-->
-<!--                    <div class="form-group">-->
-<!--                        <label style="color:blue"><b>Date of birth : </b></label>-->
-<!--                        <input class="form-group" type="date" th:field="*{birthDay}">-->
-<!--                    </div>-->
-<!--                    <div class="form-group">-->
-<!--                        <label style="color:blue"><b>Gender :</b></label>-->
-<!--                        <select th:field="*{gender}" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"-->
-<!--                                aria-haspopup="true" aria-expanded="false">-->
+<!-- edit Modal HTML -->
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+        <div>
+            <form th:action="@{/employee/edit}" method="post" th:object="${employeeDTO}">
+                <div >
+                    <h4 style="color:black">Edit Employee</h4>
+                </div>
+                <div>
+                    <input type="hidden" th:field="*{employeeId}"/>
+                    <div class="form-group">
+                        <label style="color:blue"><b>Name :</b></label>
+                        <input type="text" class="form-control" th:field="*{fullName}">
+                    </div>
+                    <div class="form-group">
+                        <label style="color:blue"><b>Date of birth : </b></label>
+                        <input class="form-group" type="date" th:field="*{birthDay}">
+                    </div>
+                    <div class="form-group">
+                        <label style="color:blue"><b>ID Card : </b></label>
+                        <input type="text" class="form-control" th:field="*{idCard}" pattern="\d{9}|\d{12}"
+                               title="Format id card: xxxxxxxxx or xxxxxxxxxxxx">
+                    </div>
+                    <div class="form-group">
+                        <label style="color:blue"><b>Salary : </b></label>
+                        <input class="form-group" type="number" th:field="*{salary}">
+                    </div>
+                    <div class="form-group">
+                        <label style="color:blue"><b>Phone : </b></label>
+                        <input type="text" class="form-control" th:field="*{phoneNumber}" placeholder="09xx"
+                               pattern="(090|091)[\d]{7}" title="Phone number is not format ">
+                    </div>
+                    <div class="form-group">
+                        <label style="color:blue"><b>Email : </b></label>
+                        <input type="text" class="form-control" th:field="*{email}" placeholder="abc@abc.abc"
+                               pattern="[a-z]+[a-zA-Z0-9]+@[a-zA-Z0-9]+(\.[a-zA-Z0-9]+\.*[a-zA-Z0-9]*)"
+                               title="Email is not format">
+                    </div>
+                    <div class="form-group">
+                        <label style="color:blue"><b>Address : </b></label>
+                        <input type="text" class="form-control" th:field="*{address}">
+                    </div>
+                    <div class="form-group">
+                        <label style="color:blue"><b>Position :</b></label>
+                        <select th:field="*{position}" class="btn btn-secondary dropdown-toggle"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-<!--                            <option value="true">Male</option>-->
-<!--                            <option value="false">Female</option>-->
+                            <option th:each="posi:${positionList}" th:text="${posi.positionName}"
+                                    th:value="${posi.positionId}"></option>
 
-<!--                        </select>-->
-<!--                    </div>-->
-<!--                    <div class="form-group">-->
-<!--                        <label style="color:blue"><b>ID Card : </b></label>-->
-<!--                        <input type="text" class="form-control" th:field="*{idCard}" pattern="\d{9}|\d{12}"-->
-<!--                               title="Format id card: xxxxxxxxx or xxxxxxxxxxxx">-->
-<!--                    </div>-->
-<!--                    <div class="form-group">-->
-<!--                        <label style="color:blue"><b>Phone : </b></label>-->
-<!--                        <input type="text" class="form-control" th:field="*{phoneNumber}" placeholder="09xx"-->
-<!--                               pattern="(090|091)[\d]{7}" title="Phone number is not format ">-->
-<!--                    </div>-->
-<!--                    <div class="form-group">-->
-<!--                        <label style="color:blue"><b>Email : </b></label>-->
-<!--                        <input type="text" class="form-control" th:field="*{email}" placeholder="abc@abc.abc"-->
-<!--                               pattern="[a-z]+[a-zA-Z0-9]+@[a-zA-Z0-9]+(\.[a-zA-Z0-9]+\.*[a-zA-Z0-9]*)"-->
-<!--                               title="Email is not format">-->
-<!--                    </div>-->
-<!--                    <div class="form-group">-->
-<!--                        <label style="color:blue"><b>Address : </b></label>-->
-<!--                        <input type="text" class="form-control" th:field="*{address}">-->
-<!--                    </div>-->
-<!--                    <div class="form-group">-->
-<!--                        <label style="color:blue"><b>Customer Type :</b></label>-->
-<!--                        <select th:field="*{customerType}" class="btn btn-secondary dropdown-toggle"-->
-<!--                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label style="color:blue"><b>Division :</b></label>
+                        <select th:field="*{division}" class="btn btn-secondary dropdown-toggle"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-<!--                            <option th:each="custype:${customerTypeList}" th:text="${custype.customerTypeName}"-->
-<!--                                    th:value="${custype.customerTypeId}" th:selected="(*{customerType} == ${custype.customerTypeId})"></option>-->
+                            <option th:each="divi:${divisionList}" th:text="${divi.divisionName}"
+                                    th:value="${divi.divisionId}"></option>
 
-<!--                        </select>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="modal-footer">-->
-<!--                    <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel">-->
-<!--                    <input type="submit" class="btn btn-primary" value="Add">-->
-<!--                </div>-->
-<!--            </form>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="col-4"></div>-->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label style="color:blue"><b>Education :</b></label>
+                        <select th:field="*{education}" class="btn btn-secondary dropdown-toggle"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-<!--</div>-->
+                            <option th:each="edu:${educationList}" th:text="${edu.educationName}"
+                                    th:value="${edu.educationId}"></option>
+
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel">
+                    <input type="submit" class="btn btn-primary" value="Edit">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-4"></div>
+
+</div>

@@ -128,19 +128,20 @@
                         </tbody>
                     </table>
                     <ul id="pagination"></ul>
+                    <div class="container">
+                        <a th:href="@{'/customer'(page=${employees.number - 1})}" th:if="${employees.hasPrevious()}">Previous</a>
+                        <span th:text="${employees.number + 1}"></span>/<span th:text="${employees.totalPages}"></span>
+                        <a th:href="@{'/customer'(page=${employees.number + 1})}" th:if="${employees.hasNext()}">Next</a>
+                    </div>
                 </div>
-                <div class="container">
-                    <a th:href="@{'/customer'(page=${employees.number - 1})}" th:if="${employees.hasPrevious()}">Previous</a>
-                    <span th:text="${employees.number + 1}"></span>/<span th:text="${employees.totalPages}"></span>
-                    <a th:href="@{'/customer'(page=${employees.number + 1})}" th:if="${employees.hasNext()}">Next</a>
-                </div>
+
             </div>
         </div>
     </div>
 </div>
 <!--end content-->
 
-add Modal HTML
+<!--add Modal HTML-->
 <div id="addEmplModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -292,16 +293,16 @@ add Modal HTML
 <div id="deleteNoteModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form th:action="@{/customer/delete}" method="post">
+            <form th:action="@{/employee/delete}" method="post">
                 <div class="modal-header">
-                    <h4 class="modal-title">Delete customer</h4>
+                    <h4 class="modal-title">Delete Employee</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="form-group">
                     <input type="hidden" name="id" id="id"/>
                 </div>
                 <div class="modal-body">
-                    <p>Are you sure you want to delete customer ?</p>
+                    <p>Are you sure you want to delete employee ?</p>
                     <label name="title"></label>
                     <p class="text-warning"><small>This action cannot be undone.</small></p>
                 </div>

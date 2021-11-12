@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:https="http://www.w3.org/1999/xhtml">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+
+</script>
+<script>
+    var content = "";
+    var page = 0;
+    $(document).ready(function () {
+        $('#searchblog').click(function (event) {
+            let title = document.getElementById("title").value;
+            let category = document.getElementById("category").value;
+
+            $.ajax({
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                type: "POST",
+                url: "/api/blog?title=" + title + "&category=" + category,
+                success: function (blogPage) {
+                    let content = "";
+                    content = '<tr>\n' +
+                        '<th scope="col">#</th>' +
+                        '<th scope="col">Blog title</th>' +
+                        '<th scope="col">Category</th>' +
+                        '<th scope="col">Date create blog</th>' +
+                        '<th scope="col">Action</th>' +
+                        '</tr>';
+                    for (let i = 0; i < blogPage.length; i++) {
+                        content += getBlog(i + 1, blogPage[i]);
+                    }
+                    document.getElementById('blogList').innerHTML = content;
+                }
+            })
+        })
+    })
+
+    function getBlog(id, blogPage) {
+        return `<tr><td >${id}</td><td >${blogPage.title}</td><td >${blogPage.category.categoryName}</td><td>${blogPage.date}</td>` +
+            `<td><a th:href="@{/blog/edit/{id}(id=${blogPage.id})}">Edit |</a>` +
+            `<a th:href="@{/blog/delete/{id}(id=${blogPage.id})}">Delete |</a>` +
+            `<a th:href="@{/blog/view/{id}(id=${blogPage.id})}">View</a></td></tr>`;
+    }
+
+    $.ajax({
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        type: "GET",
+        url: "/api/blog/more?page=0",
+        success: function (blogPage) {
+            page = blogPage.pageable.pageNumber
+            console.log("abc")
+            content = '<tr>\n' +
+                '<th scope="col">#</th>' +
+                '<th scope="col">Blog title</th>' +
+                '<th scope="col">Category</th>' +
+                '<th scope="col">Date create blog</th>' +
+                '<th scope="col">Action</th>' +
+                '</tr>';
+            for (let i = 0; i < blogPage.content.length; i++) {
+                content += getBlog(i + 1, blogPage.content[i]);
+            }
+            document.getElementById('blogList').innerHTML = content;
+        }
+    })
+    function showMore() {
+        page++;
+        console.log(page);
+        $.ajax({
+            headers: {
+                'Accept': "application/json",
+                'Content-Type': "application/json"
+            },
+            type: "GET",
+
+            url: "/api/blog/more?page="+page,
+            success: function (listBlog) {
+                for (let i = 0; i < listBlog.content.length; i++) {
+                    content += getBlog(page+1,listBlog.content[i]);
+                }
+                console.log(content)
+                document.getElementById('blogList').innerHTML = content;
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        })
+
+    }
+
+
+</script>
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" th:href="@{/blog/create}" method="GET">Add new Blog</a>
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search by blog title" aria-label="Search"
+                   name="title" id="title">
+            <select name="category" id="category">
+                <option selected value="">Chọn</option>
+                <option th:each="cat:${categoryList}" th:text="${cat.categoryName}" th:value="${cat.id}"></option>
+            </select>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="button" id="searchblog">
+                Search
+            </button>
+        </form>
+    </nav>
+</div>
+
+<div class="container">
+    <h3 style="text-align: center">Blog Management</h3>
+    <table class="table table-dark" id="blogList">
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th scope="col">#</th>-->
+<!--            <th scope="col">Blog title</th>-->
+<!--            <th scope="col">Category</th>-->
+<!--            <th scope="col">Date create blog</th>-->
+<!--            <th scope="col">Action</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr th:each="blog,item : ${blogList}">-->
+<!--            <td th:text="${item.count}"></td>-->
+<!--            <td th:text="${blog.title}"></td>-->
+<!--            <td th:if="${blog.category}"><a th:text="${blog.category.categoryName}"></a></td>-->
+<!--            <td th:text="${blog.date}"></td>-->
+<!--            <td><a th:href="@{/blog/edit/{id}(id=${blog.id})}">-->
+<!--                Edit |-->
+<!--            </a>-->
+<!--                <a th:href="@{/blog/delete/{id}(id=${blog.id})}">-->
+<!--                    Delete |-->
+<!--                </a>-->
+<!--                <a th:href="@{/blog/view/{id}(id=${blog.id})}">-->
+<!--                    View-->
+<!--                </a>-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+    </table>
+    <div class="container">
+        <a th:href="@{'/blog'(page=${blogList.number - 1},title=${title},category=${category})}"
+           th:if="${blogList.hasPrevious()}">Previous</a>
+        <span th:text="${blogList.number + 1}"></span>/<span th:text="${blogList.totalPages}"></span>
+        <a th:href="@{'/blog'(page=${blogList.number + 1},title=${title},category=${category})}"
+           th:if="${blogList.hasNext()}">Next</a>
+    </div>
+    <div>
+        <a onclick="showMore()">Show more</a>
+    </div>
+</div>
+
+</body>
+</html>
