@@ -59,7 +59,11 @@
 <div class="row">
     <div class="col-4"></div>
     <div class="col-4">
+
         <div>
+            <div>
+                <b><a href="/customer">Back >></a></b>
+            </div>
             <form th:action="@{/customer/edit}" method="post" th:object="${customerDTO}">
                 <div >
                     <h4 style="color:black">Edit Customer</h4>
@@ -116,7 +120,6 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel">
                     <input type="submit" class="btn btn-primary" value="Edit">
                 </div>
             </form>

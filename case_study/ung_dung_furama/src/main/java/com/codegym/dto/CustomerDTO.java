@@ -1,4 +1,6 @@
-package com.codegym.model;
+package com.codegym.dto;
+
+import com.codegym.model.CustomerType;
 
 public class CustomerDTO {
     private long customerId;

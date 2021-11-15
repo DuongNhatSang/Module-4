@@ -66,9 +66,13 @@
                     <li><a href="">Service</a></li>
                     <li><a href="">Contract</a></li>
                     <li class="input-group" style="margin: -6px">
-                        <form style="display: flex" action="/customer?action=search" method="post">
-                            <input type="text" id="search" name="search" class="form-control"
-                                   placeholder="Search by Name">
+                        <form style="display: flex"th:action="@{/customer/search}" method="post">
+                            <input type="text" id="nameCustomer" name="nameCus" class="form-control"
+                                   placeholder="Search by Name Customer">
+                            <select class="custom-select" id="customerType" name="customerType">
+                                <option selected value="">Customer Type</option>
+                                <option th:each="customerT:${customerTypeList}" th:value="${customerT.customerTypeId}" th:text="${customerT.customerTypeName}"></option>
+                            </select>
                             <input type="submit" class="btn btn-primary" value="Search">
                         </form>
                     </li>

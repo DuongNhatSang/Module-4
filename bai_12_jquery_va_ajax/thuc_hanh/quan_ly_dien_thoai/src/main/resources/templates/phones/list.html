@@ -95,30 +95,47 @@
 <td >${smartphone.model}</td>
 <td >${smartphone.price}</td>
 <td><input value='edit' type='button' onclick='edit(${smartphone.id})'>
-<input value='delete' type='button' onclick='delete(${smartphone.id})'></td></tr>`;
+<input value='delete' type='button' onclick='getDeleteSmart(${smartphone.id})'></td></tr>`;
         }
 
-        $(document).ready(function () {
-            //sư kiện nào thực hiện Ajax
-            $('.deleteSmartphone').click(function (event) {
-                //lay du lieu
-                let a = $(this);
-                let smartphoneId = a.attr("href");
-                // goi ajax
-                $.ajax({
-                    type: "DELETE",
-                    //tên API
-                    url: `/smartphones/${smartphoneId}`,
-                    //xử lý khi thành công
-                    success: function (data) {
-                        a.parent().parent().remove();
-                    }
+        function getDeleteSmart(id) {
+            $.ajax({
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                type: "GET",
+                //tên API
+                url: `/smartphones/edit/` + id,
+                //xử lý khi thành công
+                success: function (smartphone) {
+                    document.getElementById("idDelete").value = smartphone.id;
+                    document.getElementById("producerDelete").value = smartphone.producer;
 
-                });
-                //chặn sự kiện mặc định của thẻ
-                event.preventDefault();
+                    $('#deleteNoteModal').modal('show');
+                }
+
             });
-        })
+        }
+
+        function deleteSmart() {
+            let idsp = document.getElementById("idDelete").value;
+            $.ajax({
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                type: "GET",
+                //tên API
+                url: `/smartphones/delete/` + idsp,
+                //xử lý khi thành công
+                success: function () {
+                    showList()
+                }
+
+
+            });
+        }
 
         function edit(id) {
             $.ajax({
@@ -245,22 +262,22 @@
 <div id="deleteNoteModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form th:action="@{/customer/delete}" method="post">
+            <form >
                 <div class="modal-header">
-                    <h4 class="modal-title">Delete customer</h4>
+                    <h4 class="modal-title">Delete smmartphone </h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="form-group">
-                    <input type="hidden" name="id" id="id"/>
+                    <input type="hidden" name="id" id="idDelete"/>
                 </div>
                 <div class="modal-body">
-                    <p>Are you sure you want to delete customer ?</p>
+                    <p>Are you sure you want to delete <span id="producerDelete"></span> ?</p>
                     <label name="title"></label>
                     <p class="text-warning"><small>This action cannot be undone.</small></p>
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-danger" value="Delete">
+                    <input type="button" class="btn btn-primary" value="Delete" onclick="deleteSmart()">
                 </div>
             </form>
         </div>

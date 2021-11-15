@@ -5,6 +5,7 @@ import com.codegym.repository.IServiceRepository;
 import com.codegym.service.IServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
 
 
 @org.springframework.stereotype.Service
@@ -14,5 +15,10 @@ public class ServiceServiceImpl implements IServiceService {
     @Override
     public void save(Service service) {
         serviceRepository.save(service);
+    }
+
+    @Override
+    public List<Service> findAllList() {
+        return serviceRepository.findAll();
     }
 }

@@ -60,6 +60,9 @@
     <div class="col-4"></div>
     <div class="col-4">
         <div>
+            <div>
+                <b><a href="/employee">Back >></a></b>
+            </div>
             <form th:action="@{/employee/edit}" method="post" th:object="${employeeDTO}">
                 <div >
                     <h4 style="color:black">Edit Employee</h4>
@@ -130,7 +133,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel">
+
                     <input type="submit" class="btn btn-primary" value="Edit">
                 </div>
             </form>

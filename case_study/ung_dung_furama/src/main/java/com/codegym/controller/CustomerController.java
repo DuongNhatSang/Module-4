@@ -1,7 +1,7 @@
 package com.codegym.controller;
 
 import com.codegym.model.Customer;
-import com.codegym.model.CustomerDTO;
+import com.codegym.dto.CustomerDTO;
 import com.codegym.model.CustomerType;
 import com.codegym.service.impl.CustomerServiceImpl;
 import com.codegym.service.impl.CustomerTypeServiceImpl;
@@ -76,6 +76,18 @@ public class CustomerController {
                                  @PageableDefault(value = 5,sort = "customerId",direction = Sort.Direction.ASC)Pageable pageable){
         customerService.delete(id);
         Page<Customer> customers = customerService.findAll(pageable);
+        List<CustomerType> customerTypeList = customerTypeService.findAll();
+        model.addAttribute("customers", customers);
+        model.addAttribute("customerTypeList", customerTypeList);
+        model.addAttribute("customerDTO", new CustomerDTO());
+        return "/customer/list";
+    }
+    @PostMapping("/search")
+    public String searchCustomer(Model model,
+                                 @RequestParam(required = false,defaultValue = "") String nameCus,
+                                 @RequestParam(required = false,defaultValue = "") String customerType,
+                                 @PageableDefault(value = 5,direction = Sort.Direction.ASC)Pageable pageable){
+        Page<Customer> customers = customerService.search(nameCus,customerType,pageable);
         List<CustomerType> customerTypeList = customerTypeService.findAll();
         model.addAttribute("customers", customers);
         model.addAttribute("customerTypeList", customerTypeList);

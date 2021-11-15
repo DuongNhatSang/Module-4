@@ -1,4 +1,7 @@
-package com.codegym.model;
+package com.codegym.dto;
+
+import com.codegym.model.RentType;
+import com.codegym.model.ServiceType;
 
 public class ServiceDTO {
     private int serviceId;
