@@ -1,5 +1,7 @@
 package com.codegym.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -14,6 +16,7 @@ public class AttachService {
     private int attachServiceUnit;
     private String attachServiceStatus;
     @OneToMany(mappedBy = "attachService")
+    @JsonBackReference(value="back_class")
     private Set<ContractDetail> contractDetails;
 
     public AttachService() {

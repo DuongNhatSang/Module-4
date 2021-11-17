@@ -10,7 +10,7 @@ public class Customer{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long customerId;
-    @ManyToOne(targetEntity = CustomerType.class)
+    @ManyToOne(targetEntity = CustomerType.class,cascade = CascadeType.ALL)
     @JoinColumn(name = "customerType_id",referencedColumnName = "customerTypeId")
     private CustomerType customerType;
     private String address;
@@ -21,7 +21,7 @@ public class Customer{
     private String phoneNumber;
     private String email;
     private String idCard;
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
     private Set<Contract> contracts;
 
 

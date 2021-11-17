@@ -1,29 +1,15 @@
-package com.codegym.model;
+package com.codegym.dto;
 
-import javax.persistence.*;
+import com.codegym.model.AttachService;
+import com.codegym.model.Contract;
 
-@Entity
-@Table(name = "contractDetail")
-public class ContractDetail {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ContractDetailDTO {
     private int contractDetailId;
-    @ManyToOne(targetEntity = Contract.class,cascade = CascadeType.ALL)
-    @JoinColumn(name = "contract_id",referencedColumnName = "contractId")
     private Contract contract;
-    @ManyToOne(targetEntity = AttachService.class)
-    @JoinColumn(name = "attachService_id",referencedColumnName = "attachServiceId")
     private AttachService attachService;
     private int quantity;
 
-    public ContractDetail() {
-    }
-
-    public ContractDetail(int contractDetailId, Contract contract, AttachService attachService, int quantity) {
-        this.contractDetailId = contractDetailId;
-        this.contract = contract;
-        this.attachService = attachService;
-        this.quantity = quantity;
+    public ContractDetailDTO() {
     }
 
     public int getContractDetailId() {

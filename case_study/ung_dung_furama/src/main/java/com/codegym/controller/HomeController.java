@@ -1,12 +1,16 @@
 package com.codegym.controller;
 
-import com.codegym.dto.ContractDTO;
-import com.codegym.dto.CustomerDTO;
-import com.codegym.dto.EmployeeDTO;
-import com.codegym.dto.ServiceDTO;
+import com.codegym.dto.*;
 import com.codegym.model.*;
+import com.codegym.service.*;
 import com.codegym.service.impl.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,26 +21,28 @@ import java.util.List;
 @RequestMapping
 public class HomeController {
     @Autowired
-    CustomerServiceImpl customerService;
+    ICustomerService customerService;
     @Autowired
-    CustomerTypeServiceImpl customerTypeService;
+    ICustomerTypeService customerTypeService;
     @Autowired
-    PositionServiceImpl positionService;
+    IPositionService positionService;
     @Autowired
-    DivisionServiceImpl divisionService;
+    IDivisionService divisionService;
     @Autowired
-    EducationServiceImpl educationService;
+    IEducationService educationService;
     @Autowired
-    ServiceTypeServiceImpl serviceTypeService;
+    IServiceTypeService serviceTypeService;
     @Autowired
-    RentTypeServiceImpl rentTypeService;
+    IRentTypeService rentTypeService;
     @Autowired
-    ServiceServiceImpl serviceService;
+    IServiceService serviceService;
     @Autowired
-    EmployeeServiceImpl employeeService;
+    IEmployeeService employeeService;
+    @Autowired
+    IContractDetailService contractDetailService;
 
-    @GetMapping("/home")
-    public String showList(Model model) {
+    @GetMapping("home")
+    public String showList(Model model,@PageableDefault(value = 5,sort = "customerId",direction = Sort.Direction.ASC) Pageable pageable) {
         List<CustomerType> customerTypeList = customerTypeService.findAll();
         model.addAttribute("customerTypeList", customerTypeList);
         model.addAttribute("customerDTO", new CustomerDTO());
@@ -49,6 +55,9 @@ public class HomeController {
         List<Customer> customerList = customerService.findAllList();
         List<Employee> employeeList = employeeService.findAllList();
         List<Service> serviceList = serviceService.findAllList();
+
+        List<CustomerUsingService> customerUsingServicePage = customerService.getListCustomerUsing();
+        model.addAttribute("customerUsingServicePage", customerUsingServicePage);
 
 
         model.addAttribute("customerList", customerList);
@@ -63,6 +72,11 @@ public class HomeController {
         model.addAttribute("contractDTO", new ContractDTO());
 
         return "/home";
+    }
+    @GetMapping("/home/detail/{id}")
+    public ResponseEntity<?> editPhones(@PathVariable int id) {
+        List<ContractDetail> contractDetailList = contractDetailService.findByContractId(id);
+        return new ResponseEntity<>(contractDetailList, HttpStatus.OK);
     }
 
 

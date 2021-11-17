@@ -25,7 +25,7 @@ public class Employee{
     @ManyToOne(targetEntity = Division.class)
     @JoinColumn(name = "division_id",referencedColumnName = "divisionId")
     private Division division;
-    @OneToMany(mappedBy = "employee")
+    @OneToMany(mappedBy = "employee",cascade = CascadeType.ALL)
     private Set<Contract> contracts;
 
 

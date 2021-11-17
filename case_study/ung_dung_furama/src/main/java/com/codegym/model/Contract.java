@@ -1,5 +1,7 @@
 package com.codegym.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -15,16 +17,17 @@ public class Contract {
     private String contractEndDay;
     private double deposit;
     private double totalMoney;
-    @ManyToOne(targetEntity = Employee.class)
+    @ManyToOne(targetEntity = Employee.class,cascade = CascadeType.ALL)
     @JoinColumn(name = "employee_id",referencedColumnName = "employeeId")
     private Employee employee;
-    @ManyToOne(targetEntity = Customer.class)
+    @ManyToOne(targetEntity = Customer.class,cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id",referencedColumnName = "customerId")
     private Customer customer;
-    @ManyToOne(targetEntity = Service.class)
+    @ManyToOne(targetEntity = Service.class,cascade = CascadeType.ALL)
     @JoinColumn(name = "service_id",referencedColumnName = "serviceId")
     private Service service;
-    @OneToMany(mappedBy = "contract")
+    @OneToMany(mappedBy = "contract",cascade = CascadeType.ALL)
+    @JsonBackReference(value="back_class")
     private Set<ContractDetail> contractDetails;
 
     public Contract() {
