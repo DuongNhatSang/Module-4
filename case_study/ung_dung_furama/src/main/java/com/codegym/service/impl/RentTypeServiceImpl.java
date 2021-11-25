@@ -15,4 +15,9 @@ public class RentTypeServiceImpl implements IRentTypeService {
     public List<RentType> findAll() {
         return rentTypeRepository.findAll();
     }
+
+    @Override
+    public RentType findById(int id) {
+        return rentTypeRepository.findById(id).get();
+    }
 }

@@ -17,4 +17,9 @@ public class DivisionServiceImpl implements IDivisionService {
     public List<Division> findAll() {
         return divisionRepository.findAll();
     }
+
+    @Override
+    public Division findById(long id) {
+        return divisionRepository.findById(id).get();
+    }
 }

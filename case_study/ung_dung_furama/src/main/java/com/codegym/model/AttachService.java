@@ -15,6 +15,7 @@ public class AttachService {
     private double attachServiceCost;
     private int attachServiceUnit;
     private String attachServiceStatus;
+
     @OneToMany(mappedBy = "attachService")
     @JsonBackReference(value="back_class")
     private Set<ContractDetail> contractDetails;

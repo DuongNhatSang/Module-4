@@ -3,17 +3,43 @@ package com.codegym.dto;
 import com.codegym.model.RentType;
 import com.codegym.model.ServiceType;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class ServiceDTO {
     private int serviceId;
+
+    @NotBlank(message = "không được để trống")
     private String serviceName;
+
+    @NotNull(message = "không được để trống")
+    @Min(value = 20, message = "Phải là số dương")
     private int serviceArea;
+
+    @NotNull(message = "không được để trống")
+    @Min(value = 1, message = "Phải là số dương")
     private double serviceCost;
+
+    @NotNull(message = "không được để trống")
+    @Min(value = 1, message = "Phải là số dương")
     private int serviceMaxPeople;
-    private RentType rentType;
-    private ServiceType serviceType;
+
+    private int rentType;
+    private int serviceType;
+
+    @NotBlank(message = "không được để trống")
     private String standardRoom;
+
+    @NotBlank(message = "không được để trống")
     private String descriptionOther;
+
+    @NotNull(message = "không được để trống")
+    @Min(value = 50, message = "Phải là số dương")
     private double poolArea;
+
+    @NotNull(message = "không được để trống")
+    @Min(value = 1, message = "Phải là số dương")
     private int numberOfFloors;
 
     public ServiceDTO() {
@@ -59,19 +85,19 @@ public class ServiceDTO {
         this.serviceMaxPeople = serviceMaxPeople;
     }
 
-    public RentType getRentType() {
+    public int getRentType() {
         return rentType;
     }
 
-    public void setRentType(RentType rentType) {
+    public void setRentType(int rentType) {
         this.rentType = rentType;
     }
 
-    public ServiceType getServiceType() {
+    public int getServiceType() {
         return serviceType;
     }
 
-    public void setServiceType(ServiceType serviceType) {
+    public void setServiceType(int serviceType) {
         this.serviceType = serviceType;
     }
 

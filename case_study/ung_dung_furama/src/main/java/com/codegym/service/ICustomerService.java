@@ -14,7 +14,7 @@ public interface ICustomerService {
     Page<Customer> findAll(Pageable pageable);
     void save(Customer customer);
     Customer findById(long id);
-    void delete(long id);
+    void delete(Customer customer);
     Page<Customer> search(String nameCus, String customerType, Pageable pageable);
     List<Customer> findAllList();
     List<CustomerUsingService> getListCustomerUsing();

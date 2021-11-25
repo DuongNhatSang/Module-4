@@ -1,5 +1,7 @@
 package com.codegym.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
@@ -10,7 +12,7 @@ public class Customer{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long customerId;
-    @ManyToOne(targetEntity = CustomerType.class,cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = CustomerType.class)
     @JoinColumn(name = "customerType_id",referencedColumnName = "customerTypeId")
     private CustomerType customerType;
     private String address;
@@ -21,7 +23,8 @@ public class Customer{
     private String phoneNumber;
     private String email;
     private String idCard;
-    @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "customer")
+    @JsonBackReference(value="back_class")
     private Set<Contract> contracts;
 
 

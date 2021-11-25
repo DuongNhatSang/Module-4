@@ -8,12 +8,15 @@ public class ContractDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int contractDetailId;
-    @ManyToOne(targetEntity = Contract.class,cascade = CascadeType.ALL)
+
+    @ManyToOne(targetEntity = Contract.class)
     @JoinColumn(name = "contract_id",referencedColumnName = "contractId")
     private Contract contract;
+
     @ManyToOne(targetEntity = AttachService.class)
     @JoinColumn(name = "attachService_id",referencedColumnName = "attachServiceId")
     private AttachService attachService;
+
     private int quantity;
 
     public ContractDetail() {

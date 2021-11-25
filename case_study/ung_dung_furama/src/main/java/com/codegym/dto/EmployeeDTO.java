@@ -4,14 +4,37 @@ import com.codegym.model.Division;
 import com.codegym.model.Education;
 import com.codegym.model.Position;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 public class EmployeeDTO {
     private long employeeId;
+
+    @NotBlank(message = "không được để trống")
     private String fullName;
+
+    @NotBlank(message = "không được để trống")
     private String birthDay;
+
+    @NotBlank(message = "không được để trống")
+    @Pattern(regexp = "(090|091)[\\d]{7}",message = "Không đúng định dạng")
     private String phoneNumber;
+
+    @NotBlank(message = "không được để trống")
+    @Pattern(regexp = "[a-z]+[a-zA-Z0-9]+@[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+\\.*[a-zA-Z0-9]*)",message = "Không đúng định dạng")
     private String email;
+
+    @NotBlank(message = "không được để trống")
+    @Pattern(regexp = "\\d{9}|\\d{12}",message = "Không đúng định dạng")
     private String idCard;
+
+    @NotNull(message = "không được để trống")
+    @Min(0)
     private double salary;
+
+    @NotBlank(message = "không được để trống")
     private String address;
     private Position position;
     private Education education;

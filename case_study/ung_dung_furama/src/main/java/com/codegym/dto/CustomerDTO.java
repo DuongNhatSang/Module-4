@@ -2,15 +2,35 @@ package com.codegym.dto;
 
 import com.codegym.model.CustomerType;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 public class CustomerDTO {
     private long customerId;
     private CustomerType customerType;
+
+    @NotBlank(message = "không được để trống")
     private String address;
+
     private Boolean gender;
+
+    @NotBlank(message = "không được để trống")
     private String fullName;
+
+    @NotBlank(message = "không được để trống")
     private String birthDay;
+
+
+    @Pattern(regexp = "(090|091)[\\d]{7}",message = "Không đúng định dạng")
     private String phoneNumber;
+
+
+    @Pattern(regexp = "[a-z]+[a-zA-Z0-9]+@[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+\\.*[a-zA-Z0-9]*)",message = "Không đúng định dạng")
     private String email;
+
+
+    @Pattern(regexp = "\\d{9}|\\d{12}",message = "Không đúng định dạng")
     private String idCard;
 
     public CustomerDTO() {

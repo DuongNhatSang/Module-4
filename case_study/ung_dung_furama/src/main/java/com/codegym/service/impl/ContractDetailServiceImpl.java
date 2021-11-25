@@ -16,7 +16,12 @@ public class ContractDetailServiceImpl implements IContractDetailService {
     IContractDetailRepository contractDetailRepository;
 
     @Override
-    public List<ContractDetail> findByContractId(int id) {
-        return contractDetailRepository.getListByContractId(id);
+    public List<ContractDetailDTO> findByContractId(int id) {
+        return contractDetailRepository.getListByContractId1(id);
+    }
+
+    @Override
+    public void save(ContractDetail contractDetail) {
+        contractDetailRepository.save(contractDetail);
     }
 }

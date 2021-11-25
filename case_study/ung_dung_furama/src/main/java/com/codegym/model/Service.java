@@ -1,5 +1,7 @@
 package com.codegym.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -23,7 +25,8 @@ public class Service {
     private String descriptionOther;
     private double poolArea;
     private int numberOfFloors;
-    @OneToMany(mappedBy = "service")
+    @OneToMany(mappedBy = "service",cascade = CascadeType.ALL)
+    @JsonBackReference(value="back_class")
     private Set<Contract> contracts;
 
     public Service() {

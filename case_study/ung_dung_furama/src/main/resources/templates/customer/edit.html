@@ -73,10 +73,12 @@
                     <div class="form-group">
                         <label style="color:blue"><b>Name :</b></label>
                         <input type="text" class="form-control" th:field="*{fullName}">
+                        <small style="color: red" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></small>
                     </div>
                     <div class="form-group">
                         <label style="color:blue"><b>Date of birth : </b></label>
                         <input class="form-group" type="date" th:field="*{birthDay}">
+                        <small style="color: red" th:if="${#fields.hasErrors('birthDay')}" th:errors="*{birthDay}"></small>
                     </div>
                     <div class="form-group">
                         <label style="color:blue"><b>Gender :</b></label>
@@ -92,21 +94,28 @@
                         <label style="color:blue"><b>ID Card : </b></label>
                         <input type="text" class="form-control" th:field="*{idCard}" pattern="\d{9}|\d{12}"
                                title="Format id card: xxxxxxxxx or xxxxxxxxxxxx">
+                        <small style="color: red" th:if="${#fields.hasErrors('idCard')}" th:errors="*{idCard}"></small>
+
                     </div>
                     <div class="form-group">
                         <label style="color:blue"><b>Phone : </b></label>
                         <input type="text" class="form-control" th:field="*{phoneNumber}" placeholder="09xx"
                                pattern="(090|091)[\d]{7}" title="Phone number is not format ">
+                        <small style="color: red" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></small>
+
                     </div>
                     <div class="form-group">
                         <label style="color:blue"><b>Email : </b></label>
                         <input type="text" class="form-control" th:field="*{email}" placeholder="abc@abc.abc"
                                pattern="[a-z]+[a-zA-Z0-9]+@[a-zA-Z0-9]+(\.[a-zA-Z0-9]+\.*[a-zA-Z0-9]*)"
                                title="Email is not format">
+                        <small style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+
                     </div>
                     <div class="form-group">
                         <label style="color:blue"><b>Address : </b></label>
                         <input type="text" class="form-control" th:field="*{address}">
+                        <small style="color: red" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></small>
                     </div>
                     <div class="form-group">
                         <label style="color:blue"><b>Customer Type :</b></label>

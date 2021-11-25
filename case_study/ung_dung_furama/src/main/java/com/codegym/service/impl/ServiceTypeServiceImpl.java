@@ -15,4 +15,9 @@ public class ServiceTypeServiceImpl implements IServiceTypeService {
     public List<ServiceType> findAll() {
         return serviceTypeRepository.findAll();
     }
+
+    @Override
+    public ServiceType findById(int id) {
+        return serviceTypeRepository.findById(id).get();
+    }
 }

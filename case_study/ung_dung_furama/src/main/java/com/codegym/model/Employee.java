@@ -1,5 +1,7 @@
 package com.codegym.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -16,17 +18,26 @@ public class Employee{
     private String idCard;
     private double salary;
     private String address;
+
     @ManyToOne(targetEntity = Position.class)
     @JoinColumn(name = "position_id",referencedColumnName = "positionId")
     private Position position;
+
     @ManyToOne(targetEntity = Education.class)
     @JoinColumn(name = "education_id",referencedColumnName = "educationId")
     private Education education;
+
     @ManyToOne(targetEntity = Division.class)
     @JoinColumn(name = "division_id",referencedColumnName = "divisionId")
     private Division division;
-    @OneToMany(mappedBy = "employee",cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy = "employee")
+    @JsonBackReference(value="back_class")
     private Set<Contract> contracts;
+
+    @OneToOne (cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 
 
 
@@ -134,5 +145,21 @@ public class Employee{
 
     public void setDivision(Division division) {
         this.division = division;
+    }
+
+    public Set<Contract> getContracts() {
+        return contracts;
+    }
+
+    public void setContracts(Set<Contract> contracts) {
+        this.contracts = contracts;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

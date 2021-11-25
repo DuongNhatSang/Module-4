@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface IEducationService {
     List<Education> findAll();
+    Education findById(long id);
 }

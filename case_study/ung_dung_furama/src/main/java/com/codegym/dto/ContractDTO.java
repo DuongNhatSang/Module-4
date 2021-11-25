@@ -4,12 +4,26 @@ import com.codegym.model.Customer;
 import com.codegym.model.Employee;
 import com.codegym.model.Service;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 
 public class ContractDTO {
     private long contractId;
+
+    @NotBlank(message = "không được để trống")
     private String contractStartDay;
+
+    @NotBlank(message = "không được để trống")
     private String contractEndDay;
+
+    @NotNull(message = "không được để trống")
+    @Min(0)
     private double deposit;
+
+    @NotNull(message = "không được để trống")
+    @Min(0)
     private double totalMoney;
     private Employee employee;
     private Customer customer;
